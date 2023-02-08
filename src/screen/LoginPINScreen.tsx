@@ -1,4 +1,4 @@
-import { RouteProp, useRoute } from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import React, { useEffect, useRef, useState } from 'react';
 import {
   Dimensions,
@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import { Button, } from 'react-native-paper';
 import { RouterMainStackProps } from '../../router/MainStack';
+import { MainNavigationProp } from '../../router/routerTypes';
 import { BoldText, PINInput, Text } from '../components';
 import { Spacer } from '../libs';
 import { Color } from '../libs/Color';
@@ -22,7 +23,10 @@ type LoginPINScreenRouteProp = RouteProp<
   'LoginPIN'
 >;
 
+const mockPIN = '901234';
+
 const LoginPINScreen = () => {
+  const navigation = useNavigation<MainNavigationProp>();
   const { params } = useRoute<LoginPINScreenRouteProp>();
   const { width, height } = Dimensions.get('window');
   const pinInputARef = useRef<RNTextInput>(null);
@@ -35,6 +39,8 @@ const LoginPINScreen = () => {
     e: '',
     f: '',
   })
+
+  const result = `${pinInput.a}${pinInput.b}${pinInput.c}${pinInput.d}${pinInput.e}${pinInput.f}`
 
   // const numberOnly = props.value?.replace(/\D/g, "");
 
@@ -51,7 +57,7 @@ const LoginPINScreen = () => {
     }
   }, [Keyboard])
 
-  useEffect(() => { console.warn(pinInput) }, [pinInput])
+  useEffect(() => { console.warn(result.length < 6) }, [pinInput])
 
   return (
     <>
@@ -127,8 +133,16 @@ const LoginPINScreen = () => {
               <Spacer height={33} />
               <Button
                 labelStyle={{ color: Color.white }}
-                style={styles.button}
-                onPress={() => { }}>
+                style={{
+                  ...styles.button,
+                  backgroundColor: result.length < 6 ? Color.lightGrey : Color.orange
+                }}
+                disabled={result.length < 6}
+                onPress={() => {
+                  if (result === mockPIN) {
+                    navigation.navigate('Home')
+                  }
+                }}>
                 Continue
               </Button>
             </View>
@@ -151,7 +165,6 @@ const styles = StyleSheet.create({
   },
   button: {
     alignSelf: 'stretch',
-    backgroundColor: Color.orange,
     borderRadius: 8,
   },
   dotStyle: {

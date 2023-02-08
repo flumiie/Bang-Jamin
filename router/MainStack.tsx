@@ -23,11 +23,10 @@ const Stack = createStackNavigator<RouterMainStackProps>();
 const MainStack = () => {
   const data = {
     credentials: {
-      isLogin: false,
+      isLogin: true, // Successful login generates token & sets isLogin to 'true'
       accessToken: 'abc123def456'
     }
   };
-
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: Colors.lighter }}>
       <StatusBar barStyle="default" backgroundColor={Colors.transparent} />
