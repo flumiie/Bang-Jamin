@@ -6,7 +6,7 @@ import {
   StatusBar,
   Text,
   View,
-} from 'react-native/types';
+} from 'react-native';
 import { Spacer } from '../libs';
 
 const HomeScreen = () => {
