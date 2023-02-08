@@ -77,8 +77,8 @@ const LoginScreen = () => {
                     Continue
                   </Button>
                   <Spacer height={16} />
-                  <Text style={{ fontSize: 10 }}>
-                    By clicking continue, you agree to our Terms of Use and acknowledge that you have read our Privacy Policy.
+                  <Text style={{ textAlign: 'center', fontSize: 10 }}>
+                    By clicking continue, you agree to our <Text style={{ color: Color.orange }} onPress={() => { }}>Terms of Use</Text> and acknowledge that you have read our <Text style={{ color: Color.orange }} onPress={() => { }}>Privacy Policy</Text>.
                   </Text>
                 </View>
               </View>

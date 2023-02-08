@@ -1,5 +1,5 @@
 import { RouteProp, useRoute } from '@react-navigation/native';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   Dimensions,
   Image,
@@ -8,11 +8,12 @@ import {
   SafeAreaView,
   StatusBar,
   StyleSheet,
+  TextInput as RNTextInput,
   View,
 } from 'react-native';
 import { Button, } from 'react-native-paper';
 import { RouterMainStackProps } from '../../router/MainStack';
-import { BoldText, PINInput, Text, TextInput } from '../components';
+import { BoldText, PINInput, Text } from '../components';
 import { Spacer } from '../libs';
 import { Color } from '../libs/Color';
 
@@ -24,7 +25,18 @@ type LoginPINScreenRouteProp = RouteProp<
 const LoginPINScreen = () => {
   const { params } = useRoute<LoginPINScreenRouteProp>();
   const { width, height } = Dimensions.get('window');
+  const pinInputARef = useRef<RNTextInput>(null);
   const [keyboardShown, setKeyboardShown] = useState(false)
+  const [pinInput, setPinInput] = useState({
+    a: '',
+    b: '',
+    c: '',
+    d: '',
+    e: '',
+    f: '',
+  })
+
+  // const numberOnly = props.value?.replace(/\D/g, "");
 
   useEffect(() => {
     const showKB = Keyboard.addListener('keyboardDidShow', () => {
@@ -38,6 +50,8 @@ const LoginPINScreen = () => {
       hideKB.remove();
     }
   }, [Keyboard])
+
+  useEffect(() => { console.warn(pinInput) }, [pinInput])
 
   return (
     <>
@@ -59,20 +73,56 @@ const LoginPINScreen = () => {
               <Spacer height={34} />
               <BoldText style={{ fontSize: 24 }}>Enter Bang Jamin PIN</BoldText>
               <Spacer height={7} />
-              <Text>{params.email}</Text>
+              <Text style={{ color: Color.subGrey }}>{params.email}</Text>
               <Spacer height={34} />
               <View style={{ flexDirection: 'row' }}>
-                <PINInput />
+                <PINInput
+                  ref={pinInputARef}
+                  defaultValue={pinInput.a}
+                  onChangeText={(v) => {
+                    setPinInput({ ...pinInput, a: v })
+                  }}
+                />
                 <Spacer width={8} />
-                <PINInput />
+                <PINInput
+                  defaultValue={pinInput.b}
+                  onFocus={() => {
+                    if (!pinInput.a) {
+                      pinInputARef.current?.focus();
+                    }
+                  }}
+                  onChangeText={(v) => {
+                    setPinInput({ ...pinInput, b: v })
+                  }}
+                />
                 <Spacer width={8} />
-                <PINInput />
+                <PINInput
+                  defaultValue={pinInput.c}
+                  onChangeText={(v) => {
+                    setPinInput({ ...pinInput, c: v })
+                  }}
+                />
                 <Spacer width={8} />
-                <PINInput />
+                <PINInput
+                  defaultValue={pinInput.d}
+                  onChangeText={(v) => {
+                    setPinInput({ ...pinInput, d: v })
+                  }}
+                />
                 <Spacer width={8} />
-                <PINInput />
+                <PINInput
+                  defaultValue={pinInput.e}
+                  onChangeText={(v) => {
+                    setPinInput({ ...pinInput, e: v })
+                  }}
+                />
                 <Spacer width={8} />
-                <PINInput />
+                <PINInput
+                  defaultValue={pinInput.f}
+                  onChangeText={(v) => {
+                    setPinInput({ ...pinInput, f: v })
+                  }}
+                />
               </View>
               <Spacer height={33} />
               <Button
@@ -82,7 +132,7 @@ const LoginPINScreen = () => {
                 Continue
               </Button>
             </View>
-            <View style={keyboardShown ? { height: height / 7 } : { flex: 1 }} />
+            <View style={keyboardShown ? { height: height / 6 } : { flex: 1 }} />
           </View>
         </KeyboardAvoidingView>
       </SafeAreaView>
