@@ -5,7 +5,7 @@ import {
   FlatList,
   SafeAreaView,
   StatusBar,
-  Text,
+  StyleSheet,
   View,
 } from 'react-native';
 import { SvgXml } from 'react-native-svg';
@@ -14,8 +14,10 @@ import { Color } from '../libs/Color';
 import PageOneIcon from '../../assets/images/onboarding_page_one.svg';
 import PageTwoIcon from '../../assets/images/onboarding_page_two.svg';
 import PageThreeIcon from '../../assets/images/onboarding_page_three.svg';
-import { LiquidLike as LiquidDots } from 'react-native-animated-pagination-dots';
+import { ExpandingDot } from 'react-native-animated-pagination-dots';
 import { Button } from 'react-native-paper';
+import BoldChillText from '../components/BoldChillText';
+import RegularChillText from '../components/RegularChillText';
 
 type slideDataType = {
   id: number;
@@ -25,9 +27,8 @@ type slideDataType = {
 }
 
 const OnboardingScreen = () => {
-  const { width, height } = Dimensions.get('window');
+  const { width, } = Dimensions.get('window');
   const scrollX = useRef(new Animated.Value(0)).current;
-  const scrollOffset = useRef(new Animated.Value(0)).current;
 
   const slides: slideDataType[] = [
     {
@@ -59,16 +60,20 @@ const OnboardingScreen = () => {
   }) => {
     return (
       <View
-        style={{
-          width,
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
-        <SvgXml xml={item.icon} />
+        style={{ width, ...styles.slide }}>
+        <View style={styles.svgContainer}>
+          <SvgXml xml={item.icon} />
+        </View>
         <Spacer height={48} />
-        <Text style={{ color: Color.white }}>{item.title}</Text>
+        <BoldChillText
+          style={{ fontSize: 30, ...styles.text }}>
+          {item.title}
+        </BoldChillText>
         <Spacer height={14} />
-        <Text style={{ color: Color.white }}>{item.description}</Text>
+        <RegularChillText
+          style={{ fontSize: 14, ...styles.text }}>>
+          {item.description}
+        </RegularChillText>
       </View>
     )
   }
@@ -76,12 +81,9 @@ const OnboardingScreen = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView style={{ flex: 1, backgroundColor: Color.orange }}>
-        <View style={{ flex: 1 }} />
-        <View style={{
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
+      <SafeAreaView style={styles.safeAreaView}>
+        <View style={styles.flex} />
+        <View style={styles.container}>
           <FlatList
             data={slides}
             keyExtractor={S => S.id.toString()}
@@ -92,59 +94,79 @@ const OnboardingScreen = () => {
                 useNativeDriver: false,
               }
             )}
-            pagingEnabled
             horizontal
+            pagingEnabled
             decelerationRate={'normal'}
             scrollEventThrottle={16}
             renderItem={renderItem}
           />
-          <Spacer height={26} />
-          <LiquidDots
+          <Spacer height={52} />
+          <ExpandingDot
             data={slides}
+            expandingDotWidth={20.5}
             scrollX={scrollX}
-            scrollOffset={scrollOffset}
-            bigHead={true}
-            dotSize={18}
-            inActiveDotOpacity={0.2}
-            activeDotColor={'#fff'}
-            containerStyle={{ flex: 1 }}
+            activeDotColor={Color.white}
+            inActiveDotColor={Color.white}
+            inActiveDotOpacity={0.3}
+            dotStyle={styles.dotStyle}
+            containerStyle={styles.flex}
           />
-          <Spacer height={79} />
+        </View>
+        <Spacer height={79} />
+        <View style={styles.container}>
           <Button
             labelStyle={{ color: Color.orange }}
+            style={styles.button}
             onPress={() => {
               //
             }}>
             LOG IN
           </Button>
         </View>
-        <View style={{ flex: 1 }} />
+        <View style={styles.flex} />
       </SafeAreaView>
     </>
   );
 };
 
-// const styles = StyleSheet.create({
-//   content: {
-//     flex: 1,
-//     backgroundColor: Colors.lighter,
-//   },
-//   sectionContainer: {
-//     marginTop: 32,
-//     paddingHorizontal: 24,
-//   },
-//   sectionTitle: {
-//     fontSize: 24,
-//     fontWeight: '600',
-//   },
-//   sectionDescription: {
-//     marginTop: 8,
-//     fontSize: 18,
-//     fontWeight: '400',
-//   },
-//   highlight: {
-//     fontWeight: '700',
-//   },
-// });
+const styles = StyleSheet.create({
+  flex: {
+    flex: 1
+  },
+  container: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  safeAreaView: {
+    flex: 1,
+    backgroundColor: Color.orange
+  },
+  button: {
+    alignSelf: 'stretch',
+    marginHorizontal: 29.5,
+    backgroundColor: Color.white,
+    borderRadius: 16,
+  },
+  dotStyle: {
+    width: 6,
+    height: 6,
+    borderRadius: 5,
+    marginHorizontal: 4
+  },
+  slide: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  svgContainer: {
+    width: 390,
+    height: 358,
+    aspectRatio: 390 / 358
+  },
+  text: {
+    color: Color.white,
+    textAlign: 'center',
+    paddingHorizontal: 32
+  }
+});
 
 export default OnboardingScreen;

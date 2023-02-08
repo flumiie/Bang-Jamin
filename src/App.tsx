@@ -7,14 +7,14 @@ import { MD3LightTheme as DefaultTheme, Provider as PaperProvider } from 'react-
 import { Provider as StoreProvider } from 'react-redux';
 import { Color } from './libs/Color';
 
-const theme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    primary: Color.white,
-    secondary: Color.orange,
-  },
-};
+// const theme = {
+//   ...DefaultTheme,
+//   colors: {
+//     ...DefaultTheme.colors,
+//     primary: Color.white,
+//     secondary: Color.orange,
+//   },
+// };
 
 const App = (): JSX.Element => {
   useEffect(() => {
@@ -26,11 +26,11 @@ const App = (): JSX.Element => {
   return (
     <NavigationContainer>
       <SafeAreaProvider>
-        <StoreProvider store={theme}>
-          <PaperProvider>
-            <MainStack />
-          </PaperProvider>
-        </StoreProvider>
+        {/* <StoreProvider store={theme}> */}
+        <PaperProvider>
+          <MainStack />
+        </PaperProvider>
+        {/* </StoreProvider> */}
       </SafeAreaProvider>
     </NavigationContainer>
   );
