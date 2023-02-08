@@ -4,24 +4,23 @@ import {
   SafeAreaView,
   ScrollView,
   StatusBar,
-  Text,
   View,
 } from 'react-native';
-import { Spacer } from '../libs';
+import { Color } from '../libs/Color';
 
 const HomeScreen = () => {
   const { width, height } = Dimensions.get('window');
 
   return (
     <>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar barStyle="default" />
       <SafeAreaView style={{ flex: 1 }}>
         <ScrollView
           style={{ flex: 1 }}
           horizontal={true}
           scrollEventThrottle={16}
           pagingEnabled={true}
-          contentContainerStyle={{ backgroundColor: '#f00' }}>
+          contentContainerStyle={{ backgroundColor: Color.white }}>
           <View style={{ width, height }}>
             <></>
           </View>

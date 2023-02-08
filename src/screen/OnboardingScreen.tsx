@@ -18,6 +18,8 @@ import { ExpandingDot } from 'react-native-animated-pagination-dots';
 import { Button } from 'react-native-paper';
 import BoldChillText from '../components/BoldChillText';
 import RegularChillText from '../components/RegularChillText';
+import { useNavigation } from '@react-navigation/native';
+import { MainNavigationProp } from '../../router/routerTypes';
 
 type slideDataType = {
   id: number;
@@ -27,7 +29,8 @@ type slideDataType = {
 }
 
 const OnboardingScreen = () => {
-  const { width, } = Dimensions.get('window');
+  const navigation = useNavigation<MainNavigationProp>();
+  const { width } = Dimensions.get('window');
   const scrollX = useRef(new Animated.Value(0)).current;
 
   const slides: slideDataType[] = [
@@ -71,7 +74,7 @@ const OnboardingScreen = () => {
         </BoldChillText>
         <Spacer height={14} />
         <RegularChillText
-          style={{ fontSize: 14, ...styles.text }}>>
+          style={{ fontSize: 14, ...styles.text }}>
           {item.description}
         </RegularChillText>
       </View>
@@ -80,7 +83,7 @@ const OnboardingScreen = () => {
 
   return (
     <>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar barStyle="default" />
       <SafeAreaView style={styles.safeAreaView}>
         <View style={styles.flex} />
         <View style={styles.container}>
@@ -117,9 +120,7 @@ const OnboardingScreen = () => {
           <Button
             labelStyle={{ color: Color.orange }}
             style={styles.button}
-            onPress={() => {
-              //
-            }}>
+            onPress={() => { navigation.navigate('Login') }}>
             LOG IN
           </Button>
         </View>
@@ -145,7 +146,7 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     marginHorizontal: 29.5,
     backgroundColor: Color.white,
-    borderRadius: 16,
+    borderRadius: 8,
   },
   dotStyle: {
     width: 6,

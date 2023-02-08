@@ -1,10 +1,9 @@
 import React from 'react'
-import {
-  Text as RNText, TextProps as RNTextProps, TextStyle,
-} from 'react-native';
+import { TextStyle } from 'react-native';
+import { Text as PaperText, TextProps } from 'react-native-paper';
 
-const BoldChillText = (props: RNTextProps) => {
-  return <RNText style={{ fontFamily: 'Chillax-Bold', ...props.style as TextStyle }}>{props.children}</RNText>
+const BoldChillText = (props: TextProps) => {
+  return <PaperText style={{ fontFamily: 'Chillax-Bold', ...props.style as TextStyle }}>{props.children}</PaperText>
 }
 
 export default BoldChillText;

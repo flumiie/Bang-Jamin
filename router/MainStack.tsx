@@ -6,18 +6,19 @@ import {
   createStackNavigator,
   TransitionPresets,
 } from '@react-navigation/stack';
-import OnboardingScreen from '../src/screen/OnboardingScreen';
-import HomeScreen from '../src/screen/HomeScreen';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { HomeScreen, LoginPINScreen, LoginScreen, OnboardingScreen } from '../src/screen';
 
 
-export type RouterRootStackProps = {
+export type RouterMainStackProps = {
   Onboarding: undefined;
+  Login: undefined;
+  LoginPIN: { email: string };
   Home: undefined;
 };
 
-const Stack = createStackNavigator<RouterRootStackProps>();
+const Stack = createStackNavigator<RouterMainStackProps>();
 
 const MainStack = () => {
   const data = {
@@ -29,7 +30,7 @@ const MainStack = () => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: Colors.lighter }}>
-      <StatusBar barStyle="dark-content" backgroundColor={Colors.transparent} />
+      <StatusBar barStyle="default" backgroundColor={Colors.transparent} />
       <Stack.Navigator
         initialRouteName="Onboarding"
         screenOptions={{
@@ -42,7 +43,11 @@ const MainStack = () => {
             <Stack.Screen name="Home" component={HomeScreen} />
           </>
           :
-          <Stack.Screen name="Onboarding" component={OnboardingScreen} />
+          <>
+            <Stack.Screen name="Onboarding" component={OnboardingScreen} />
+            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="LoginPIN" component={LoginPINScreen} />
+          </>
         }
       </Stack.Navigator>
     </SafeAreaView>

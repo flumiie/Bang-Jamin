@@ -1,12 +1,13 @@
 import React from 'react'
-import {
-  Text as RNText, TextProps as RNTextProps, TextStyle,
-} from 'react-native';
+import { TextStyle } from 'react-native';
+import { Text as PaperText, TextProps } from 'react-native-paper';
 
-const RegularChillText = (props: RNTextProps) => {
-  return <RNText style={{
-    fontFamily: 'Chillax-Regular', ...props.style as TextStyle
-  }}>{props.children}</RNText>
+const RegularChillText = (props: TextProps) => {
+  return <PaperText style={{
+    fontFamily: 'Chillax-Regular',
+    ...props.style as TextStyle
+  }}>{props.children}</PaperText>
+
 }
 
 export default RegularChillText;
