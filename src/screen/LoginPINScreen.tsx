@@ -11,7 +11,7 @@ import {
   TextInput as RNTextInput,
   View,
 } from 'react-native';
-import { Button, } from 'react-native-paper';
+import { Button, Dialog, } from 'react-native-paper';
 import { RouterMainStackProps } from '../../router/MainStack';
 import { MainNavigationProp } from '../../router/routerTypes';
 import { BoldText, PINInput, Text } from '../components';
@@ -30,6 +30,7 @@ const LoginPINScreen = () => {
   const { params } = useRoute<LoginPINScreenRouteProp>();
   const { width, height } = Dimensions.get('window');
   const [keyboardShown, setKeyboardShown] = useState(false)
+  const [popupVisible, setPopupVisible] = React.useState(false);
   const [pinInput, setPinInput] = useState({
     a: '',
     b: '',
@@ -37,7 +38,7 @@ const LoginPINScreen = () => {
     d: '',
     e: '',
     f: '',
-  })
+  });
 
   const result = `${pinInput.a}${pinInput.b}${pinInput.c}${pinInput.d}${pinInput.e}${pinInput.f}`
 
@@ -136,6 +137,8 @@ const LoginPINScreen = () => {
                      * Please set isLogin: true in {data}, inside MainStack.tsx
                      */
                     navigation.navigate('Home');
+                  } else {
+                    setPopupVisible(true)
                   }
                 }}>
                 Continue
@@ -144,6 +147,24 @@ const LoginPINScreen = () => {
             <View style={keyboardShown ? { height: height / 6 } : { flex: 1 }} />
           </View>
         </KeyboardAvoidingView>
+        <Dialog
+          visible={popupVisible}
+          style={{ backgroundColor: Color.white }}
+          onDismiss={() => setPopupVisible(false)}
+        >
+          <Dialog.Title style={{ color: Color.black }}>Alert</Dialog.Title>
+          <Dialog.Content>
+            <Text style={{ color: Color.black }} variant="bodyMedium">Incorrect PIN</Text>
+          </Dialog.Content>
+          <Dialog.Actions>
+            <Button
+              labelStyle={{ color: Color.black }}
+              onPress={() => setPopupVisible(false)}
+            >
+              OK
+            </Button>
+          </Dialog.Actions>
+        </Dialog>
       </SafeAreaView>
     </>
   );

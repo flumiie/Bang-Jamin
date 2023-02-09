@@ -37,7 +37,7 @@ const HomeScreen = () => {
   return (
     <>
       <StatusBar barStyle="default" />
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: Color.white }}>
         <ScrollView
           scrollEventThrottle={16}
           contentContainerStyle={{ backgroundColor: Color.white }}>
@@ -133,6 +133,7 @@ const HomeScreen = () => {
                 flex: 1,
                 flexDirection: 'row',
                 justifyContent: 'space-between',
+                alignItems: 'center',
                 backgroundColor: Color.border,
                 paddingVertical: 20,
                 paddingHorizontal: 16,
