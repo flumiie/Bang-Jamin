@@ -29,7 +29,6 @@ const LoginPINScreen = () => {
   const navigation = useNavigation<MainNavigationProp>();
   const { params } = useRoute<LoginPINScreenRouteProp>();
   const { width, height } = Dimensions.get('window');
-  const pinInputARef = useRef<RNTextInput>(null);
   const [keyboardShown, setKeyboardShown] = useState(false)
   const [pinInput, setPinInput] = useState({
     a: '',
@@ -41,8 +40,6 @@ const LoginPINScreen = () => {
   })
 
   const result = `${pinInput.a}${pinInput.b}${pinInput.c}${pinInput.d}${pinInput.e}${pinInput.f}`
-
-  // const numberOnly = props.value?.replace(/\D/g, "");
 
   useEffect(() => {
     const showKB = Keyboard.addListener('keyboardDidShow', () => {
@@ -83,7 +80,6 @@ const LoginPINScreen = () => {
               <Spacer height={34} />
               <View style={{ flexDirection: 'row' }}>
                 <PINInput
-                  ref={pinInputARef}
                   defaultValue={pinInput.a}
                   onChangeText={(v) => {
                     setPinInput({ ...pinInput, a: v })
@@ -92,11 +88,6 @@ const LoginPINScreen = () => {
                 <Spacer width={8} />
                 <PINInput
                   defaultValue={pinInput.b}
-                  onFocus={() => {
-                    if (!pinInput.a) {
-                      pinInputARef.current?.focus();
-                    }
-                  }}
                   onChangeText={(v) => {
                     setPinInput({ ...pinInput, b: v })
                   }}
@@ -140,7 +131,11 @@ const LoginPINScreen = () => {
                 disabled={result.length < 6}
                 onPress={() => {
                   if (result === mockPIN) {
-                    navigation.navigate('Home')
+                    /*
+                     * Only mock, won't work for now
+                     * Please set isLogin: true in {data}, inside MainStack.tsx
+                     */
+                    navigation.navigate('Home');
                   }
                 }}>
                 Continue

@@ -1,14 +1,13 @@
 import React from 'react';
 import { StatusBar, StyleSheet } from 'react-native';
 
-import { NavigatorScreenParams } from '@react-navigation/native';
 import {
   createStackNavigator,
   TransitionPresets,
 } from '@react-navigation/stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import { HomeScreen, LoginPINScreen, LoginScreen, OnboardingScreen } from '../src/screen';
+import { ClientsScreen, HomeScreen, LoginPINScreen, LoginScreen, OnboardingScreen } from '../src/screen';
 
 
 export type RouterMainStackProps = {
@@ -16,6 +15,7 @@ export type RouterMainStackProps = {
   Login: undefined;
   LoginPIN: { email: string };
   Home: undefined;
+  Clients: undefined;
 };
 
 const Stack = createStackNavigator<RouterMainStackProps>();
@@ -23,7 +23,7 @@ const Stack = createStackNavigator<RouterMainStackProps>();
 const MainStack = () => {
   const data = {
     credentials: {
-      isLogin: true, // Successful login generates token & sets isLogin to 'true'
+      isLogin: false, // Successful login generates token & sets isLogin to 'true'
       accessToken: 'abc123def456'
     }
   };
@@ -40,6 +40,10 @@ const MainStack = () => {
         {data.credentials.isLogin ?
           <>
             <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen
+              name="Clients"
+              component={ClientsScreen}
+              options={{ title: 'Nasabah' }} />
           </>
           :
           <>
