@@ -26,7 +26,6 @@ import TruckIcon from '../../assets/images/truck.svg';
 import WandIcon from '../../assets/images/magic_wand.svg';
 import CommissionIcon from '../../assets/images/commission.svg';
 import ShieldIcon from '../../assets/images/shield.svg';
-import { AvailableFeatures } from '../libs/types';
 import { useNavigation } from '@react-navigation/native';
 import { MainNavigationProp } from '../../router/routerTypes';
 
@@ -41,10 +40,15 @@ const HomeScreen = () => {
         <ScrollView
           scrollEventThrottle={16}
           contentContainerStyle={{ backgroundColor: Color.white }}>
-          <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={[Color.orange2, Color.orange3]} style={{
-            width,
-            ...styles.header
-          }}>
+          <LinearGradient
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            colors={[Color.orange2, Color.orange3]}
+            style={{
+              width,
+              ...styles.header
+            }}
+          >
             <ImageBackground
               style={{
                 width: '100%',
@@ -62,32 +66,12 @@ const HomeScreen = () => {
             </ImageBackground>
           </LinearGradient>
           <View style={{ marginHorizontal: 16 }}>
-            <View style={{
-              marginTop: -25,
-              borderRadius: 16,
-              alignItems: 'center',
-              flexDirection: 'row',
-              backgroundColor: Color.white,
-              elevation: 7,
-              shadowColor: Color.black,
-              shadowOffset: {
-                width: 0,
-                height: -5,
-              },
-              shadowOpacity: 0.1,
-              shadowRadius: 7,
-            }}>
+            <View style={styles.headerButtonContainer}>
               <Pressable
-                style={{
-                  flex: 1,
-                  borderTopLeftRadius: 16,
-                  borderBottomLeftRadius: 16,
-                  borderTopRightRadius: 0,
-                  borderBottomRightRadius: 0,
-                }}
+                style={styles.headerButtonWallet}
                 onPress={() => { }}
               >
-                <View style={{ paddingHorizontal: 16, paddingVertical: 18 }}>
+                <View style={styles.headerButtonContentContainer}>
                   <SvgXml xml={WalletIcon} width={24} />
                   <Spacer height={6} />
                   <Text>IDR 0 Jt</Text>
@@ -95,13 +79,10 @@ const HomeScreen = () => {
               </Pressable>
               <Divider />
               <Pressable
-                style={{
-                  flex: 1,
-                  borderRadius: 0,
-                }}
+                style={styles.headerButtonPoint}
                 onPress={() => { }}
               >
-                <View style={{ paddingHorizontal: 16, paddingVertical: 18 }}>
+                <View style={styles.headerButtonContentContainer}>
                   <SvgXml xml={PoinIcon} width={24} />
                   <Spacer height={6} />
                   <Text>0 Poin</Text>
@@ -109,16 +90,10 @@ const HomeScreen = () => {
               </Pressable>
               <Divider />
               <Pressable
-                style={{
-                  flex: 1,
-                  borderTopLeftRadius: 0,
-                  borderBottomLeftRadius: 0,
-                  borderTopRightRadius: 16,
-                  borderBottomRightRadius: 16,
-                }}
+                style={styles.headerButtonPeople}
                 onPress={() => { }}
               >
-                <View style={{ paddingHorizontal: 16, paddingVertical: 18 }}>
+                <View style={styles.headerButtonContentContainer}>
                   <SvgXml xml={PeopleIcon} width={24} />
                   <Spacer height={6} />
                   <Text>0 Sahabat</Text>
@@ -129,16 +104,7 @@ const HomeScreen = () => {
             <Spacer height={16} />
 
             <Pressable onPress={() => { }}>
-              <View style={{
-                flex: 1,
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                backgroundColor: Color.border,
-                paddingVertical: 20,
-                paddingHorizontal: 16,
-                borderRadius: 16,
-              }}>
+              <View style={styles.shareButton}>
                 <SvgXml xml={SupportIcon} width={31} height={31} />
                 <View style={{ flex: 1, marginHorizontal: 12 }}>
                   <BoldText>Yuk Undang Sahabat!</BoldText>
@@ -160,7 +126,7 @@ const HomeScreen = () => {
                 onPress={() => {
                   // navigation.navigate('CarAssurance')
                 }}
-                style={{ paddingHorizontal: 21, alignItems: 'center' }}
+                style={styles.featureButton}
               >
                 <SvgXml xml={CarIcon} width={58} height={58} />
                 <Spacer height={8} />
@@ -170,7 +136,7 @@ const HomeScreen = () => {
                 onPress={() => {
                   // navigation.navigate('BikeAssurance')
                 }}
-                style={{ paddingHorizontal: 21, alignItems: 'center' }}
+                style={styles.featureButton}
               >
                 <SvgXml xml={BikeIcon} width={58} height={58} />
                 <Spacer height={8} />
@@ -180,7 +146,7 @@ const HomeScreen = () => {
                 onPress={() => {
                   // navigation.navigate('TruckAssurance')
                 }}
-                style={{ paddingHorizontal: 21, alignItems: 'center' }}
+                style={styles.featureButton}
               >
                 <SvgXml xml={TruckIcon} width={58} height={58} />
                 <Spacer height={8} />
@@ -199,7 +165,7 @@ const HomeScreen = () => {
                 onPress={() => {
                   // navigation.navigate('Sales')
                 }}
-                style={{ paddingHorizontal: 21, alignItems: 'center' }}
+                style={styles.featureButton}
               >
                 <SvgXml xml={WandIcon} width={58} height={58} />
                 <Spacer height={8} />
@@ -209,7 +175,7 @@ const HomeScreen = () => {
                 onPress={() => {
                   // navigation.navigate('CommissionRevenue')
                 }}
-                style={{ paddingHorizontal: 21, alignItems: 'center' }}
+                style={styles.featureButton}
               >
                 <SvgXml xml={CommissionIcon} width={58} height={58} />
                 <Spacer height={8} />
@@ -219,7 +185,7 @@ const HomeScreen = () => {
                 onPress={() => {
                   navigation.navigate('Clients');
                 }}
-                style={{ paddingHorizontal: 21, alignItems: 'center' }}
+                style={styles.featureButton}
               >
                 <SvgXml xml={ShieldIcon} width={58} height={58} />
                 <Spacer height={8} />
@@ -247,6 +213,57 @@ const styles = StyleSheet.create({
   headerTextLarge: {
     fontSize: 22,
     color: Color.white
+  },
+  headerButtonContainer: {
+    marginTop: -25,
+    borderRadius: 16,
+    alignItems: 'center',
+    flexDirection: 'row',
+    backgroundColor: Color.white,
+    elevation: 7,
+    shadowColor: Color.black,
+    shadowOffset: {
+      width: 0,
+      height: -5,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 7,
+  },
+  headerButtonWallet: {
+    flex: 1,
+    borderTopLeftRadius: 16,
+    borderBottomLeftRadius: 16,
+    borderTopRightRadius: 0,
+    borderBottomRightRadius: 0,
+  },
+  headerButtonPoint: {
+    flex: 1,
+    borderRadius: 0,
+  },
+  headerButtonPeople: {
+    flex: 1,
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
+    borderTopRightRadius: 16,
+    borderBottomRightRadius: 16,
+  },
+  headerButtonContentContainer: {
+    paddingHorizontal: 16,
+    paddingVertical: 18
+  },
+  shareButton: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: Color.border,
+    paddingVertical: 20,
+    paddingHorizontal: 16,
+    borderRadius: 16,
+  },
+  featureButton: {
+    paddingHorizontal: 21,
+    alignItems: 'center'
   }
 })
 
