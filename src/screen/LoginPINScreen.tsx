@@ -136,6 +136,7 @@ const LoginPINScreen = () => {
                      * Only mock, won't work for now
                      * Please set isLogin: true in {data}, inside MainStack.tsx
                      */
+                    console.warn('Only mock, won\'t work for now, Please set isLogin: true in {data}, inside MainStack.tsx')
                     navigation.navigate('Home');
                   } else {
                     setPopupVisible(true)
