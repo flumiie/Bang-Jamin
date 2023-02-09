@@ -36,7 +36,7 @@ const HomeScreen = () => {
 
   return (
     <>
-      <StatusBar barStyle="default" />
+      <StatusBar barStyle="default" backgroundColor={Color.orange3} />
       <SafeAreaView style={{ flex: 1, backgroundColor: Color.white }}>
         <ScrollView
           scrollEventThrottle={16}
