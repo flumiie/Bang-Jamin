@@ -143,7 +143,7 @@ const HomeScreen = () => {
                 <View style={{ flex: 1, marginHorizontal: 12 }}>
                   <BoldText>Yuk Undang Sahabat!</BoldText>
                   <Spacer height={2} />
-                  <Text>Cari cuan bareng sahabat kamu</Text>
+                  <Text style={{ color: Color.lightGrey2 }}>Cari cuan bareng sahabat kamu</Text>
                 </View>
                 <SvgXml xml={AddIcon} width={31} height={31} />
               </View>
