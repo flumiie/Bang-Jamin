@@ -46,31 +46,27 @@ const HomeScreen = () => {
             colors={[Color.orange2, Color.orange3]}
             style={{
               width,
-              ...styles.header
-            }}
-          >
+              ...styles.header,
+            }}>
             <ImageBackground
               style={{
                 width: '100%',
                 height: '100%',
                 justifyContent: 'center',
               }}
-              source={require('../../assets/images/header.png')}
-            >
+              source={require('../../assets/images/header.png')}>
               <View style={styles.headerTextContainer}>
-                <Text style={styles.headerText}>
-                  Halo Sahabat</Text>
-                <BoldChillText style={styles.headerTextLarge}>Bang Jamin,</BoldChillText>
+                <Text style={styles.headerText}>Halo Sahabat</Text>
+                <BoldChillText style={styles.headerTextLarge}>
+                  Bang Jamin,
+                </BoldChillText>
                 <Text style={styles.headerText}>Cari Cuan Yuk</Text>
               </View>
             </ImageBackground>
           </LinearGradient>
           <View style={{ marginHorizontal: 16 }}>
             <View style={styles.headerButtonContainer}>
-              <Pressable
-                style={styles.headerButtonWallet}
-                onPress={() => { }}
-              >
+              <Pressable style={styles.headerButtonWallet} onPress={() => {}}>
                 <View style={styles.headerButtonContentContainer}>
                   <SvgXml xml={WalletIcon} width={24} />
                   <Spacer height={6} />
@@ -78,10 +74,7 @@ const HomeScreen = () => {
                 </View>
               </Pressable>
               <Divider />
-              <Pressable
-                style={styles.headerButtonPoint}
-                onPress={() => { }}
-              >
+              <Pressable style={styles.headerButtonPoint} onPress={() => {}}>
                 <View style={styles.headerButtonContentContainer}>
                   <SvgXml xml={PoinIcon} width={24} />
                   <Spacer height={6} />
@@ -89,10 +82,7 @@ const HomeScreen = () => {
                 </View>
               </Pressable>
               <Divider />
-              <Pressable
-                style={styles.headerButtonPeople}
-                onPress={() => { }}
-              >
+              <Pressable style={styles.headerButtonPeople} onPress={() => {}}>
                 <View style={styles.headerButtonContentContainer}>
                   <SvgXml xml={PeopleIcon} width={24} />
                   <Spacer height={6} />
@@ -103,13 +93,15 @@ const HomeScreen = () => {
 
             <Spacer height={16} />
 
-            <Pressable onPress={() => { }}>
+            <Pressable onPress={() => {}}>
               <View style={styles.shareButton}>
                 <SvgXml xml={SupportIcon} width={31} height={31} />
                 <View style={{ flex: 1, marginHorizontal: 12 }}>
                   <BoldText>Yuk Undang Sahabat!</BoldText>
                   <Spacer height={2} />
-                  <Text style={{ color: Color.lightGrey2 }}>Cari cuan bareng sahabat kamu</Text>
+                  <Text style={{ color: Color.lightGrey2 }}>
+                    Cari cuan bareng sahabat kamu
+                  </Text>
                 </View>
                 <SvgXml xml={AddIcon} width={31} height={31} />
               </View>
@@ -119,15 +111,17 @@ const HomeScreen = () => {
 
             <BoldText style={{ fontSize: 16 }}>Produk Asuransi</BoldText>
             <Spacer height={4} />
-            <Text style={{ color: Color.lightGrey2 }}>Pilih produk asuransi yang di butuhkan</Text>
+            <Text style={{ color: Color.lightGrey2 }}>
+              Pilih produk asuransi yang di butuhkan
+            </Text>
             <Spacer height={22} />
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+            <View
+              style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
               <Pressable
                 onPress={() => {
                   // navigation.navigate('CarAssurance')
                 }}
-                style={styles.featureButton}
-              >
+                style={styles.featureButton}>
                 <SvgXml xml={CarIcon} width={58} height={58} />
                 <Spacer height={8} />
                 <Text>Mobil</Text>
@@ -136,8 +130,7 @@ const HomeScreen = () => {
                 onPress={() => {
                   // navigation.navigate('BikeAssurance')
                 }}
-                style={styles.featureButton}
-              >
+                style={styles.featureButton}>
                 <SvgXml xml={BikeIcon} width={58} height={58} />
                 <Spacer height={8} />
                 <Text>Motor</Text>
@@ -146,8 +139,7 @@ const HomeScreen = () => {
                 onPress={() => {
                   // navigation.navigate('TruckAssurance')
                 }}
-                style={styles.featureButton}
-              >
+                style={styles.featureButton}>
                 <SvgXml xml={TruckIcon} width={58} height={58} />
                 <Spacer height={8} />
                 <Text>Truk</Text>
@@ -158,15 +150,17 @@ const HomeScreen = () => {
 
             <BoldText style={{ fontSize: 16 }}>Ruang Kerja</BoldText>
             <Spacer height={4} />
-            <Text style={{ color: Color.lightGrey2 }}>Cek status polis, klaim dan penarikan komisi</Text>
+            <Text style={{ color: Color.lightGrey2 }}>
+              Cek status polis, klaim dan penarikan komisi
+            </Text>
             <Spacer height={22} />
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+            <View
+              style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
               <Pressable
                 onPress={() => {
                   // navigation.navigate('Sales')
                 }}
-                style={styles.featureButton}
-              >
+                style={styles.featureButton}>
                 <SvgXml xml={WandIcon} width={58} height={58} />
                 <Spacer height={8} />
                 <Text>Penjualan</Text>
@@ -175,8 +169,7 @@ const HomeScreen = () => {
                 onPress={() => {
                   // navigation.navigate('CommissionRevenue')
                 }}
-                style={styles.featureButton}
-              >
+                style={styles.featureButton}>
                 <SvgXml xml={CommissionIcon} width={58} height={58} />
                 <Spacer height={8} />
                 <Text>Tarik Komisi</Text>
@@ -185,8 +178,7 @@ const HomeScreen = () => {
                 onPress={() => {
                   navigation.navigate('Clients');
                 }}
-                style={styles.featureButton}
-              >
+                style={styles.featureButton}>
                 <SvgXml xml={ShieldIcon} width={58} height={58} />
                 <Spacer height={8} />
                 <Text>Nasabah</Text>
@@ -201,18 +193,18 @@ const HomeScreen = () => {
 
 const styles = StyleSheet.create({
   header: {
-    height: 202
+    height: 202,
   },
   headerTextContainer: {
-    marginLeft: 19.19
+    marginLeft: 19.19,
   },
   headerText: {
     fontSize: 16,
-    color: Color.white
+    color: Color.white,
   },
   headerTextLarge: {
     fontSize: 22,
-    color: Color.white
+    color: Color.white,
   },
   headerButtonContainer: {
     marginTop: -25,
@@ -249,7 +241,7 @@ const styles = StyleSheet.create({
   },
   headerButtonContentContainer: {
     paddingHorizontal: 16,
-    paddingVertical: 18
+    paddingVertical: 18,
   },
   shareButton: {
     flex: 1,
@@ -263,8 +255,8 @@ const styles = StyleSheet.create({
   },
   featureButton: {
     paddingHorizontal: 21,
-    alignItems: 'center'
-  }
-})
+    alignItems: 'center',
+  },
+});
 
 export default HomeScreen;

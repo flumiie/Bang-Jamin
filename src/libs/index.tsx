@@ -5,11 +5,4 @@ import IconSet from './IconSet';
 import Spacer from './Spacer';
 import Toolbar from './Toolbar';
 
-export {
-  Color,
-  Divider,
-  HorizontalDivider,
-  IconSet as Icon,
-  Spacer,
-  Toolbar
-};
+export { Color, Divider, HorizontalDivider, IconSet as Icon, Spacer, Toolbar };

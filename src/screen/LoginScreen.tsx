@@ -12,7 +12,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { Button, } from 'react-native-paper';
+import { Button } from 'react-native-paper';
 import { MainNavigationProp } from '../../router/routerTypes';
 import { BoldText, Text, TextInput } from '../components';
 import { Spacer } from '../libs';
@@ -36,31 +36,29 @@ const LoginScreen = () => {
           <Formik
             initialValues={{ email: '' }}
             validationSchema={InputSchema}
-            onSubmit={(vars) => {
+            onSubmit={vars => {
               Keyboard.dismiss();
               navigation.navigate('LoginPIN', {
-                email: vars.email
-              })
-            }}
-          >
+                email: vars.email,
+              });
+            }}>
             {({ handleSubmit, handleChange, errors, values, touched }) => (
               <View
                 style={{
                   width,
                   height,
-                  justifyContent: 'space-between',
-                  backgroundColor: Color.white
+                  ...styles.formContainer,
                 }}>
                 <Image
-                  resizeMode='cover'
-                  style={{ width: '100%', height: '65%' }}
+                  resizeMode="cover"
+                  style={styles.image}
                   source={require('../../assets/images/login_background.png')}
                 />
                 <Spacer height={12} />
                 <View style={styles.contentContainer}>
                   <Image source={require('../../assets/images/logo.png')} />
                   <Spacer height={16} />
-                  <BoldText style={{ fontSize: 24 }}>Login via Email</BoldText>
+                  <BoldText style={styles.viaEmail}>Login via Email</BoldText>
                   <Spacer height={16} />
                   <TextInput
                     placeholder="tony@bangjamin.com"
@@ -77,8 +75,16 @@ const LoginScreen = () => {
                     Continue
                   </Button>
                   <Spacer height={16} />
-                  <Text style={{ textAlign: 'center', fontSize: 10 }}>
-                    By clicking continue, you agree to our <Text style={{ color: Color.orange }} onPress={() => { }}>Terms of Use</Text> and acknowledge that you have read our <Text style={{ color: Color.orange }} onPress={() => { }}>Privacy Policy</Text>.
+                  <Text style={styles.tnc}>
+                    By clicking continue, you agree to our{' '}
+                    <Text style={{ color: Color.orange }} onPress={() => {}}>
+                      Terms of Use
+                    </Text>{' '}
+                    and acknowledge that you have read our{' '}
+                    <Text style={{ color: Color.orange }} onPress={() => {}}>
+                      Privacy Policy
+                    </Text>
+                    .
                   </Text>
                 </View>
               </View>
@@ -93,14 +99,28 @@ const LoginScreen = () => {
 const styles = StyleSheet.create({
   contentContainer: {
     flex: 1,
-    padding: 16
+    padding: 16,
   },
   button: {
     alignSelf: 'stretch',
     backgroundColor: Color.orange,
     borderRadius: 8,
   },
+  formContainer: {
+    justifyContent: 'space-between',
+    backgroundColor: Color.white,
+  },
+  viaEmail: {
+    fontSize: 24,
+  },
+  image: {
+    width: '100%',
+    height: '65%',
+  },
+  tnc: {
+    textAlign: 'center',
+    fontSize: 10,
+  },
 });
-
 
 export default LoginScreen;

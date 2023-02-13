@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  FlatList,
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  View,
-} from 'react-native';
+import { FlatList, SafeAreaView, StatusBar, View } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 import { Color } from '../libs/Color';
 
@@ -24,7 +18,7 @@ type ClientDataType = {
   clientName: string;
   clientEmail: string;
   type: AvailableFeatures;
-}
+};
 
 const ClientsScreen = () => {
   const mockData: ClientDataType[] = [
@@ -39,18 +33,17 @@ const ClientsScreen = () => {
       clientName: 'Baudy',
       clientEmail: 'baudy@bangjamin.com',
       type: 'Bike_Assurance',
-    }
-  ]
-
-
+    },
+  ];
 
   const renderItem = ({ item }: { item: ClientDataType }) => {
     return (
-      <View style={{
-        flexDirection: 'row',
-        paddingVertical: 16,
-        alignItems: 'center',
-      }}>
+      <View
+        style={{
+          flexDirection: 'row',
+          paddingVertical: 16,
+          alignItems: 'center',
+        }}>
         <IconRender type={item.type} />
         <Spacer width={18} />
         <View>
@@ -58,8 +51,8 @@ const ClientsScreen = () => {
           <BoldText>{item.clientEmail}</BoldText>
         </View>
       </View>
-    )
-  }
+    );
+  };
 
   return (
     <>
@@ -81,49 +74,24 @@ const ClientsScreen = () => {
 
 const IconRender: React.FC<{ type: AvailableFeatures | null }> = ({ type }) => {
   if (type === 'Car_Assurance') {
-    return <SvgXml
-      xml={CarIcon}
-      width={48}
-      height={48}
-    />
+    return <SvgXml xml={CarIcon} width={48} height={48} />;
   }
   if (type === 'Bike_Assurance') {
-    return <SvgXml
-      xml={BikeIcon}
-      width={48}
-      height={48}
-    />
+    return <SvgXml xml={BikeIcon} width={48} height={48} />;
   }
   if (type === 'Truck_Assurance') {
-    return <SvgXml
-      xml={TruckIcon}
-      width={48}
-      height={48}
-    />
+    return <SvgXml xml={TruckIcon} width={48} height={48} />;
   }
   if (type === 'Sales') {
-    return <SvgXml
-      xml={WandIcon}
-      width={48}
-      height={48}
-    />
+    return <SvgXml xml={WandIcon} width={48} height={48} />;
   }
   if (type === 'Commission_Revenue') {
-    return <SvgXml
-      xml={CommissionIcon}
-      width={48}
-      height={48}
-    />
+    return <SvgXml xml={CommissionIcon} width={48} height={48} />;
   }
   if (type === 'Client') {
-    return <SvgXml
-      xml={ShieldIcon}
-      width={48}
-      height={48}
-    />
+    return <SvgXml xml={ShieldIcon} width={48} height={48} />;
   }
   return <Spacer width={48} />;
-}
-
+};
 
 export default ClientsScreen;

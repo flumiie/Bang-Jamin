@@ -5,4 +5,3 @@ export type AvailableFeatures =
   | 'Sales'
   | 'Commission_Revenue'
   | 'Client';
-

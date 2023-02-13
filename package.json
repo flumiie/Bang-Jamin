@@ -5,7 +5,8 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "lint": "eslint .",
+    "lint": "prettier --check 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
+    "lint:fix": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
     "start": "react-native start",
     "test": "jest"
   },

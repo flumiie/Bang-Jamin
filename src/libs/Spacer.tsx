@@ -1,6 +1,6 @@
 import React from 'react';
-import {View} from 'react-native';
-import {ViewStyle} from 'react-native/types';
+import { View } from 'react-native';
+import { ViewStyle } from 'react-native/types';
 
 interface SpacerProps extends ViewStyle {
   width?: number;

@@ -26,7 +26,7 @@ type slideDataType = {
   icon: string;
   title: string;
   description: string;
-}
+};
 
 const OnboardingScreen = () => {
   const navigation = useNavigation<MainNavigationProp>();
@@ -38,15 +38,13 @@ const OnboardingScreen = () => {
       id: 1,
       icon: PageOneIcon,
       title: 'Cuan Gak Pake Modal?',
-      description:
-        'Bisa dong, yuk gabung gratis Jadi sahabat Bang Jamin',
+      description: 'Bisa dong, yuk gabung gratis Jadi sahabat Bang Jamin',
     },
     {
       id: 2,
       icon: PageTwoIcon,
       title: 'Banyak Sahabat\nBanyak Rejeki',
-      description:
-        'Cari cuan makin kenceng dan seru bareng sahabat Bang Jamin',
+      description: 'Cari cuan makin kenceng dan seru bareng sahabat Bang Jamin',
     },
     {
       id: 3,
@@ -56,30 +54,23 @@ const OnboardingScreen = () => {
     },
   ];
 
-  const renderItem = ({
-    item,
-  }: {
-    item: slideDataType
-  }) => {
+  const renderItem = ({ item }: { item: slideDataType }) => {
     return (
-      <View
-        style={{ width, ...styles.slide }}>
+      <View style={{ width, ...styles.slide }}>
         <View style={styles.svgContainer}>
           <SvgXml xml={item.icon} />
         </View>
         <Spacer height={48} />
-        <BoldChillText
-          style={{ fontSize: 30, ...styles.text }}>
+        <BoldChillText style={{ ...styles.text, ...styles.title }}>
           {item.title}
         </BoldChillText>
         <Spacer height={14} />
-        <RegularChillText
-          style={{ fontSize: 14, ...styles.text }}>
+        <RegularChillText style={{ ...styles.text, ...styles.subtitle }}>
           {item.description}
         </RegularChillText>
       </View>
-    )
-  }
+    );
+  };
 
   return (
     <>
@@ -95,7 +86,7 @@ const OnboardingScreen = () => {
               [{ nativeEvent: { contentOffset: { x: scrollX } } }],
               {
                 useNativeDriver: false,
-              }
+              },
             )}
             horizontal
             pagingEnabled
@@ -120,7 +111,9 @@ const OnboardingScreen = () => {
           <Button
             labelStyle={{ color: Color.orange }}
             style={styles.button}
-            onPress={() => { navigation.navigate('Login') }}>
+            onPress={() => {
+              navigation.navigate('Login');
+            }}>
             LOG IN
           </Button>
         </View>
@@ -132,7 +125,7 @@ const OnboardingScreen = () => {
 
 const styles = StyleSheet.create({
   flex: {
-    flex: 1
+    flex: 1,
   },
   container: {
     alignItems: 'center',
@@ -140,7 +133,7 @@ const styles = StyleSheet.create({
   },
   safeAreaView: {
     flex: 1,
-    backgroundColor: Color.orange
+    backgroundColor: Color.orange,
   },
   button: {
     alignSelf: 'stretch',
@@ -152,7 +145,7 @@ const styles = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 5,
-    marginHorizontal: 4
+    marginHorizontal: 4,
   },
   slide: {
     alignItems: 'center',
@@ -161,13 +154,19 @@ const styles = StyleSheet.create({
   svgContainer: {
     width: 390,
     height: 358,
-    aspectRatio: 390 / 358
+    aspectRatio: 390 / 358,
   },
   text: {
     color: Color.white,
     textAlign: 'center',
-    paddingHorizontal: 32
-  }
+    paddingHorizontal: 32,
+  },
+  title: {
+    fontSize: 30,
+  },
+  subtitle: {
+    fontSize: 14,
+  },
 });
 
 export default OnboardingScreen;

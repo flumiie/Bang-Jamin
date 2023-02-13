@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions, Pressable, View } from 'react-native';
+import { Dimensions, Pressable, StyleSheet, View } from 'react-native';
 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { SvgXml } from 'react-native-svg';
@@ -24,55 +24,39 @@ const Toolbar = ({
   leftComponent,
   rightComponent,
 }: ToolbarProps) => {
-  const navigation = useNavigation<MainNavigationProp>()
+  const navigation = useNavigation<MainNavigationProp>();
   const insets = useSafeAreaInsets();
 
   const leftComponentRenderer = () => {
     if (leftComponent) {
-      return leftComponent
+      return leftComponent;
     }
-    return <SvgXml xml={BackIcon} width={24} />
-  }
+    return <SvgXml xml={BackIcon} width={24} />;
+  };
 
   return (
-    <View
-      style={{
-        backgroundColor: Color.white,
-        marginBottom: 1,
-      }}
-      accessibilityLabel="toolbar"
-    >
+    <View style={styles.toolbar} accessibilityLabel="toolbar">
       <View
         style={{
-          paddingVertical: 10,
-          paddingHorizontal: 16,
-          flexDirection: 'row',
-          backgroundColor: Color.white,
-          justifyContent: 'space-between',
-          height: 56,
-          alignItems: 'center',
-          marginTop: insets.top
-        }}
-      >
+          marginTop: insets.top,
+          ...styles.toolbarSub,
+        }}>
         <ScreenTitle>{title}</ScreenTitle>
         <Pressable
           onPress={() => {
             if (onLeftComponentPress) {
-              onLeftComponentPress()
+              onLeftComponentPress();
             } else {
               navigation.goBack();
             }
           }}
-          style={{
-            padding: 16,
-            paddingRight: 12,
-            left: -16
-          }}
-        >{leftComponentRenderer()}</Pressable>
-        <View style={{ flex: 1 }} />
+          style={styles.leftButton}>
+          {leftComponentRenderer()}
+        </Pressable>
+        <View style={styles.flex} />
         <View>{rightComponent && rightComponent}</View>
       </View>
-    </View >
+    </View>
   );
 };
 
@@ -89,25 +73,53 @@ const ScreenTitle = ({
     <View
       style={{
         ...style,
-        justifyContent: 'center',
-        position: 'absolute',
-        left: 52,
-        right: 0,
-        bottom: 0,
-        top: 0,
-      }}
-    >
+        ...styles.screenTitleContainer,
+      }}>
       <BoldText
         style={{
           maxWidth: width - (80 + 24),
-          fontSize: 18
+          ...styles.title,
         }}
-        numberOfLines={1}
-      >
+        numberOfLines={1}>
         {children}
       </BoldText>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  toolbar: {
+    backgroundColor: Color.white,
+    marginBottom: 1,
+  },
+  toolbarSub: {
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    flexDirection: 'row',
+    backgroundColor: Color.white,
+    justifyContent: 'space-between',
+    height: 56,
+    alignItems: 'center',
+  },
+  flex: {
+    flex: 1,
+  },
+  leftButton: {
+    padding: 16,
+    paddingRight: 12,
+    left: -16,
+  },
+  screenTitleContainer: {
+    justifyContent: 'center',
+    position: 'absolute',
+    left: 52,
+    right: 0,
+    bottom: 0,
+    top: 0,
+  },
+  title: {
+    fontSize: 18,
+  },
+});
 
 export default Toolbar;
