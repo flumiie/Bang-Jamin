@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
+    "android:bundle": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
+    "android:debug": "react-native run-android",
+    "android:release": "react-native run-android --mode=release",
     "ios": "react-native run-ios",
     "lint": "prettier --check 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
     "lint:fix": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "236103649492",
+    "project_id": "bang-jamin-amdemo",
+    "storage_bucket": "bang-jamin-amdemo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236103649492:android:26f8cd996e5ecc9cefd341",
+        "android_client_info": {
+          "package_name": "com.bangjamin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "236103649492-f8ap4vpae8v20kh4c9t1shu0lhmvlea0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzYBpXiSQ2bqsr3snVDXDP8XPUlMiio6Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "236103649492-f8ap4vpae8v20kh4c9t1shu0lhmvlea0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
