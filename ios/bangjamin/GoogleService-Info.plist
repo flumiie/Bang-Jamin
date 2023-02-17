@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>236103649492-k589frbj84ojchsrrunpbigmdpgc04eo.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.236103649492-k589frbj84ojchsrrunpbigmdpgc04eo</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBTlQzbdVpK4iB355axE2b5GLMpRCZvKOY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>236103649492</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>org.reactjs.native.example.BangJamin</string>
+	<key>PROJECT_ID</key>
+	<string>bang-jamin-amdemo</string>
+	<key>STORAGE_BUCKET</key>
+	<string>bang-jamin-amdemo.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:236103649492:ios:ec68820299cf3ba7efd341</string>
+</dict>
+</plist>
